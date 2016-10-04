@@ -1,18 +1,15 @@
-CC = gcc -g -Wall
+CC = gcc -g -lrt -Wall
 
-all: classlist
+all: avltree
 
-classlist: bin_search_tree.o set.o classlist.h classlist.c
-	$(CC) -o classlist classlist.c bin_search_tree.o set.o
+avltree: bin_search_tree.o avltree.c
+	$(CC) -o avltree avltree.c bin_search_tree.o
 
 bin_search_tree.o: bin_search_tree.h bin_search_tree.c
 	$(CC) -c bin_search_tree.c
-	
-set.o: set.h set.c
-	$(CC) -c set.c
-	
+
 tidy :
-	rm -f bin_search_tree.o set.o core
+	rm -f bin_search_tree.o core
 
 clean :
-	rm -f classlist bin_search_tree.o set.o core
+	rm -f avltree bin_search_tree.o core
